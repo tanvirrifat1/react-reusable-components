@@ -6,7 +6,7 @@ const App = () => {
     <div>
       <Container>
         <div className="h-screen w-full flex justify-center items-center">
-          <Button className="text-white text-xl px-5 py-2 rounded-lg" />
+          <Button outline={true} className="" />
         </div>
       </Container>
     </div>
