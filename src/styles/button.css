@@ -1,0 +1,11 @@
+@layer components {
+    .btn{
+        @apply px-6 py-2 text-xl text-white rounded-xl
+    }
+    .btn-primary{
+        @apply bg-purple-500
+    }
+    .btn-danger{
+        @apply bg-red-500
+    }
+}
