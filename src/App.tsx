@@ -6,7 +6,7 @@ const App = () => {
     <div>
       <Container>
         <div className="h-screen w-full flex justify-center items-center">
-          <Button outline={true} className="" />
+          <Button variant="outline" outline={false} className="" />
         </div>
       </Container>
     </div>

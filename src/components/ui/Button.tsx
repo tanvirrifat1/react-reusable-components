@@ -5,20 +5,20 @@ type IButton = {
   outline: boolean;
 };
 
-const Button = ({ className, outline }: IButton) => {
-  return (
-    <button
-      className={cn(
-        `text-white bg-orange-600 text-xl px-5 py-2 rounded-lg `,
-        {
-          "border text-black border-purple-600 bg-opacity-10": outline,
-        },
-        className
-      )}
-    >
-      Click
-    </button>
-  );
+const Button = ({ className, outline, variant }: IButton) => {
+  const getVariant = () => {
+    switch (variant) {
+      case "outline":
+        return "btn-outline";
+      case "ghost":
+        return "btn-ghost";
+
+      default:
+        return "btn-solid";
+    }
+  };
+
+  return <button className={cn(getVariant(variant), className)}>Click</button>;
 };
 
 export default Button;
