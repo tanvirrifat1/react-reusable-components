@@ -1,7 +1,7 @@
 @layer components {
     .btn-solid{
         @apply px-6 py-2 font-semibold ;
-        @apply text-xl text-white rounded-xl;
+        @apply text-xl bg-cyan-500 text-white rounded-xl;
         @apply hover:bg-purple-500 hover:text-white;
         @apply focus:bg-purple-500 focus:text-white;
         @apply transition-all

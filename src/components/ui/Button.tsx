@@ -1,24 +1,44 @@
+import { ButtonHTMLAttributes, DetailedHTMLProps, forwardRef } from "react";
 import cn from "../../ultis/cn";
 
-type IButton = {
-  className: string;
-  outline: boolean;
+type TRef = HTMLButtonElement;
+
+type TVariant = "solid" | "ghost" | "outline";
+
+type TButtonOptions = {
+  variant?: TVariant;
 };
 
-const Button = ({ className, outline, variant }: IButton) => {
-  const getVariant = () => {
-    switch (variant) {
-      case "outline":
-        return "btn-outline";
-      case "ghost":
-        return "btn-ghost";
+type TButton = DetailedHTMLProps<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+> &
+  TButtonOptions;
 
-      default:
-        return "btn-solid";
-    }
-  };
+const Button = forwardRef<TRef, TButton>(
+  ({ className, variant = "solid", ...rest }, ref) => {
+    const getVariant = (variant: TVariant) => {
+      switch (variant) {
+        case "outline":
+          return "btn-outline";
+        case "ghost":
+          return "btn-ghost";
 
-  return <button className={cn(getVariant(variant), className)}>Click</button>;
-};
+        default:
+          return "btn-solid";
+      }
+    };
+
+    return (
+      <button
+        {...rest}
+        ref={ref}
+        className={cn(getVariant(variant), className)}
+      >
+        Click
+      </button>
+    );
+  }
+);
 
 export default Button;

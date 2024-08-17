@@ -6,7 +6,7 @@ const App = () => {
     <div>
       <Container>
         <div className="h-screen w-full flex justify-center items-center">
-          <Button variant="outline" outline={false} className="" />
+          <Button variant="ghost" />
         </div>
       </Container>
     </div>
