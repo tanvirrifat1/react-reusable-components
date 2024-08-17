@@ -14,8 +14,11 @@ const App = () => {
     <Container>
       <div className=" h-screen w-full flex justify-center items-center">
         <Button onClick={() => setModal((prev) => !prev)}>Open Modal</Button>
-        <Modal isOpen={modal} OnClose={handleModalClose}>
-          <h1>This is Modal</h1>
+        <Modal isOpen={modal} onClose={handleModalClose}>
+          <Modal.Header>
+            <Modal.CloseButton />
+          </Modal.Header>
+          <h1>Hello</h1>
         </Modal>
       </div>
     </Container>
