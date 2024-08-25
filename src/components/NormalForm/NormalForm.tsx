@@ -15,7 +15,7 @@ const NormalForm = () => {
     <div>
       <form
         onSubmit={handleSubmit(onsubmit)}
-        className={cn("border border-purple-600  p-5 mx-auto mt-24", {
+        className={cn("border border-gray-300  p-5 mx-auto mt-24", {
           "max-w-5xl": double,
           "max-w-md": !double,
         })}
@@ -72,13 +72,15 @@ const NormalForm = () => {
           </div>
           <div className="w-full max-w-md">
             <label className="block text-xl">checkbox</label>
-            <input type="checkbox" />
+            <input type="checkbox" className="-mt-6" />
           </div>
         </div>
 
-        <Button type="submit" variant="solid">
-          Submit
-        </Button>
+        <div className="flex justify-end">
+          <Button className="w-full md:w-fit" type="submit" variant="solid">
+            Submit
+          </Button>
+        </div>
       </form>
     </div>
   );
