@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import Button from "../ui/Button";
+import cn from "../../ultis/cn";
 
 const NormalForm = () => {
   const { register, handleSubmit } = useForm();
@@ -8,25 +9,34 @@ const NormalForm = () => {
     console.log(data);
   };
 
+  const double = true;
+
   return (
     <div>
       <form
         onSubmit={handleSubmit(onsubmit)}
-        className="border border-purple-600 max-w-5xl p-5 mx-auto mt-24"
+        className={cn("border border-purple-600  p-5 mx-auto mt-24", {
+          "max-w-5xl": double,
+          "max-w-md": !double,
+        })}
       >
-        <div className=" grid grid-cols-2 gap-2">
-          <div>
+        <div
+          className={cn("grid grid-cols-1 justify-items-center gap-2", {
+            "md:grid-cols-2": double,
+          })}
+        >
+          <div className="w-full max-w-md">
             <label className="block text-xl" htmlFor="name">
               Name
             </label>
             <input
-              className="w-full"
+              className="w-full border border-gray-300 rounded-md focus:border-purple-500 focus:ring-1 focus:ring-purple-500"
               type="text"
               id="name"
               {...register("name")}
             />
           </div>
-          <div>
+          <div className="w-full max-w-md">
             <label className="block text-xl" htmlFor="email">
               Email
             </label>
@@ -37,7 +47,7 @@ const NormalForm = () => {
               {...register("email")}
             />
           </div>
-          <div>
+          <div className="w-full max-w-md">
             <label className="block text-xl" htmlFor="password">
               Password
             </label>
