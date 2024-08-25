@@ -30,7 +30,7 @@ const NormalForm = () => {
               Name
             </label>
             <input
-              className="w-full border border-gray-300 rounded-md focus:border-purple-500 focus:ring-1 focus:ring-purple-500"
+              className="w-full"
               type="text"
               id="name"
               {...register("name")}
@@ -57,6 +57,22 @@ const NormalForm = () => {
               id="password"
               {...register("password")}
             />
+          </div>
+          <div className="w-full max-w-md">
+            <label className="block text-xl">Other</label>
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </div>
+          <div className="w-full max-w-md">
+            <label className="block text-xl">Text-Area</label>
+            <textarea></textarea>
+          </div>
+          <div className="w-full max-w-md">
+            <label className="block text-xl">checkbox</label>
+            <input type="checkbox" />
           </div>
         </div>
 
