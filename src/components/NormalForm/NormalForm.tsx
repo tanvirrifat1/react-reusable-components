@@ -1,16 +1,11 @@
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import Button from "../ui/Button";
 import cn from "../../ultis/cn";
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { z } from "zod";
 
-const SignUpSchema = () =>
-  z.object({
-    name: z.string(),
-    email: z.string().email(),
-    password: z.string().min(6, "Too short"),
-  });
+import { zodResolver } from "@hookform/resolvers/zod";
+import { SignUpSchema, TNormalForm } from "./Validation";
 
 const NormalForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,13 +13,15 @@ const NormalForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<TNormalForm>({
+    resolver: zodResolver(SignUpSchema),
+  });
 
   const handlePassNavigator = () => {
     setShowPassword(!showPassword);
   };
 
-  const onsubmit = (data: any) => {
+  const onsubmit = (data: FieldValues) => {
     console.log(data);
   };
 
@@ -55,7 +52,9 @@ const NormalForm = () => {
               {...register("name", { required: true })}
             />
             {errors.name && (
-              <span className="text-xs  text-red-500">Name is Required</span>
+              <span className="text-xs  text-red-500">
+                {errors.name.message}
+              </span>
             )}
           </div>
           <div className="w-full max-w-md">
@@ -69,7 +68,9 @@ const NormalForm = () => {
               {...register("email", { required: true })}
             />
             {errors.email && (
-              <span className="text-xs text-red-500">Email is Required</span>
+              <span className="text-xs text-red-500">
+                {errors.email.message}
+              </span>
             )}
           </div>
           <div className="w-full max-w-md">
@@ -78,7 +79,6 @@ const NormalForm = () => {
             </label>
             <div className="relative w-full">
               <input
-                required
                 className="w-full pr-10"
                 type={showPassword ? "text" : "password"}
                 id="password"
@@ -95,6 +95,11 @@ const NormalForm = () => {
                   <AiOutlineEye size={24} />
                 )}
               </div>
+              {errors?.password && (
+                <span className="text-xs text-red-600">
+                  {errors?.password?.message}
+                </span>
+              )}
             </div>
           </div>
           {/* <div className="w-full max-w-md">
